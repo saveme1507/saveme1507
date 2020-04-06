@@ -53,25 +53,26 @@ if ((empty($email)) || (empty($password))) {
 	die(json_encode($response));
 }
 
-$query = mysqli_query($con, "SELECT * FROM users WHERE email_usr='$email' OR nama_usr='$email' AND password='$password'");
+$query = mysqli_query($con, "SELECT * FROM master_user WHERE (mu_email='$email' OR mu_nama='$email') AND mu_pass='$password'");
 $row = mysqli_fetch_array($query);
 
-$query_namapt = mysqli_query($con, "SELECT nama_pt FROM perusahaan WHERE id_pt='" . $row['id_pt'] . "'");
+$query_namapt = mysqli_query($con, "SELECT mp_nama FROM master_perusahaan WHERE mp_id='" . $row['mu_id_pt'] . "'");
 $row_namapt = mysqli_fetch_array($query_namapt);
 
 if (!empty($row)) {
 	$response = new usr();
 	$response->success = 1;
-	$response->message = "Selamat datang " . $row['nama_usr'];
-	$response->id_usr = $row['id_usr'];
-	$response->nama_usr = $row['nama_usr'];
-	$response->telp_usr = $row['telp_usr'];
-	$response->email_usr = $row['email_usr'];
-	$response->id_pt = $row['id_pt'];
-	$response->logo_usr = $row['logo_usr'];
-	$response->flag_usr = $row['flag_usr'];
-	$response->nama_pt = $row_namapt['nama_pt'];
-
+	$response->message = "Selamat datang " . $row['mu_nama'];
+	$response->mu_id = $row['mu_id'];
+	$response->mu_nama = $row['mu_nama'];
+	$response->mu_telp = $row['mu_telp'];
+	$response->mu_email = $row['mu_email'];
+	$response->mu_pass	= $row['mu_pass'];
+	$response->mu_logo = $row['mu_logo'];
+	$response->mu_flag = $row['mu_flag'];
+	$response->mu_token	= $row['mu_token'];
+	$response->mu_id_pt = $row['mu_id_pt'];
+	$response->mp_nama = $row_namapt['mp_nama'];
 	die(json_encode($response));
 } else {
 	$response = new usr();
