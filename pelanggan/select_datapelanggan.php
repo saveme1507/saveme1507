@@ -1,7 +1,7 @@
 <?php
 include "../koneksi.php";
 
-$query = mysqli_query($con, "SELECT mp_id, mp_nama FROM master_perusahaan");
+$query = mysqli_query($con, "SELECT * FROM master_perusahaan");
 
 $json = array();
 
