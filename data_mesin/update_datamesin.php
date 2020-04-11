@@ -19,4 +19,9 @@ if ($query) {
     $response->success = 1;
     $response->message = "Tambah data mesin berhasil";
     die(json_encode($response));
+} else {
+    $response->error = mysqli_error($con);
+    die(json_encode($response));
 }
+
+mysqli_close($con);

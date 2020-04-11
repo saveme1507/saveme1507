@@ -18,6 +18,7 @@ $actualpath = "http://192.168.43.103/pelaporan_imaje/pengaturan/$path";
 
 $query = mysqli_query($con, "UPDATE master_user SET mu_logo='$actualpath' WHERE mu_id='" . $mu_id . "'");
 
+
 if ($query) {
     file_put_contents($path, base64_decode($mu_logo));
     if (file_exists($hapus)) {
