@@ -1,7 +1,7 @@
 <?php
 class Fcm
 {
-    function sendNotif($token)
+    function sendNotif($token, $judul, $isi)
     {
 
         $curl = curl_init();
@@ -19,12 +19,12 @@ class Fcm
 "registration_ids": ' . $token . ',
 "collapse_key": "type_a",
 "notification": {
-"judul": "Judul notifikasi default",
-"isi": "Isi notifikasi default"
+"judul": "Notifikasi baru ",
+"isi": "Laporan dari PT..."
 },
 "data": {
-"judul": "Body of Your Notification in Data",
-"isi": "Title of Your Notification in Title"
+"judul": "' . $judul . '",
+"isi": "' . $isi . '"
 }
 }',
             CURLOPT_HTTPHEADER => array(
