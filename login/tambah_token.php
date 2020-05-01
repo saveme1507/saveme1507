@@ -21,3 +21,5 @@ if ($query) {
     $response->message = "TAMBAH TOKEN GAGAL";
     die(json_encode($response));
 }
+
+mysqli_close($con);
