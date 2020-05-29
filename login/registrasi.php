@@ -15,12 +15,12 @@ $cust       = $_POST["nama_pt"];
 
 
 $query_pt = mysqli_query($con, "SELECT mp_id FROM master_perusahaan WHERE mp_nama='" . $cust . "'");
-$row_pt = mysqli_fetch_array($query_pt);
+$row_pt = mysqli_fetch_row($query_pt);
 
 $num_rows = mysqli_num_rows(mysqli_query($con, "SELECT * FROM master_user WHERE mu_nama='" . $username . "' AND mu_email = '" . $email . "'"));
 
 if ($num_rows == 0) {
-    $query = mysqli_query($con, "INSERT INTO master_user (mu_nama,mu_email,mu_pass,mu_flag,mu_id_pt) VALUES('" . $username . "','" . $email . "','" . $password . "'," . $flag . "," . $row_pt['mp_nama'] . ")");
+    $query = mysqli_query($con, "INSERT INTO master_user (mu_nama,mu_email,mu_pass,mu_flag,mu_id_pt) VALUES('" . $username . "','" . $email . "','" . $password . "'," . $flag . "," . $row_pt[0] . ")");
 
     if ($query) {
         $response = new usr();

@@ -5,12 +5,12 @@ $mm_id = $_GET['mm_id'];
 class xxx
 {
 }
-$bulan1 = date('m', strtotime('-1 month'));
-$bulan2 = date('m', strtotime('-2 month'));
-$bulan3 = date('m', strtotime('-3 month'));
-$tahun1 = date('Y', strtotime('-1 month'));
-$tahun2 = date('Y', strtotime('-2 month'));
-$tahun3 = date('Y', strtotime('-3 month'));
+$bulan1 = date('m');
+$bulan2 = date('m', strtotime('-1 month'));
+$bulan3 = date('m', strtotime('-2 month'));
+$tahun1 = date('Y');
+$tahun2 = date('Y', strtotime('-1 month'));
+$tahun3 = date('Y', strtotime('-2 month'));
 
 $query1 = mysqli_query($con, "SELECT COUNT(header_laporan_mesin.hlm_pengerjaan) AS jml FROM header_laporan_mesin INNER JOIN detail_laporan_mesin ON header_laporan_mesin.hlm_id=detail_laporan_mesin.dlm_id WHERE month(header_laporan_mesin.hlm_tanggal)='" . $bulan1 . "' AND year(header_laporan_mesin.hlm_tanggal)='" . $tahun1 . "' AND header_laporan_mesin.hlm_pengerjaan='Perbaikan' AND detail_laporan_mesin.dlm_id_mesin=" . $mm_id);
 $row1 = mysqli_fetch_array($query1);
