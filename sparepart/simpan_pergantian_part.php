@@ -17,7 +17,7 @@ $random = random_word(20);
 $path = "images_part/" . $random . ".png";
 
 // sesuiakan ip address laptop/pc atau URL server
-$actualpath = "http://192.168.43.103/pelaporan_imaje/sparepart/$path";
+$actualpath = BASE_URL . "/sparepart/$path";
 
 $query = mysqli_query($con, "INSERT INTO histori_sparepart (hs_tgl,hs_pn,hs_nama,hs_gambar,hs_ket,hs_id_mesin) VALUES ('" . $hs_tgl . "','" . $hs_pn . "','" . $hs_nama . "','" . $actualpath . "','" . $hs_ket . "'," . $hs_id_mesin . ")");
 

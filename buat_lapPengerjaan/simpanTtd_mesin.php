@@ -7,13 +7,14 @@ class emp
 
 $hlm_id = $_POST['hlm_id'];
 $hlm_ttd = $_POST['hlm_ttd'];
+$mu_nama = $_POST['mu_nama'];
 
 $random = random_word(20);
 
-$path = "images_ttd/" . $random . ".png";
+$path = "images_ttd/" . $mu_nama . "_" . $random . ".png";
 
 // sesuiakan ip address laptop/pc atau URL server
-$actualpath = "http://192.168.43.103/pelaporan_imaje/buat_lapPengerjaan/$path";
+$actualpath = BASE_URL . "/buat_lapPengerjaan/$path";
 
 $query = mysqli_query($con, "UPDATE header_laporan_mesin SET hlm_ttd='" . $actualpath . "' WHERE hlm_id=" . $hlm_id);
 

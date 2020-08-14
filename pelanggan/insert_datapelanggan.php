@@ -14,7 +14,7 @@ $random = random_word(20);
 $path = "images_pelanggan/" . $random . ".png";
 
 // sesuiakan ip address laptop/pc atau URL server
-$actualpath = "http://192.168.43.103/pelaporan_imaje/pelanggan/$path";
+$actualpath = BASE_URL . "/pelanggan/$path";
 
 $query = mysqli_query($con, "INSERT INTO master_perusahaan (mp_nama,mp_alamat,mp_logo) VALUES ('" . $nama . "','" . $alamat . "','" . $actualpath . "')");
 

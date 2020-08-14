@@ -7,13 +7,14 @@ class emp
 
 $hlm_id = $_POST['hlm_id'];
 $hlm_ttd = $_POST['hlm_ttd'];
+$mu_nama = $_POST['mu_nama'];
 
 $random = random_word(20);
 
-$path = "images_ttd/" . $random . ".png";
+$path = "images_ttd/" . $mu_nama . "_" . $random . ".png";
 
 // sesuiakan ip address laptop/pc atau URL server
-$actualpath = "http://192.168.43.103/pelaporan_imaje/sparepart/$path";
+$actualpath = BASE_URL . "/sparepart/$path";
 
 $query = mysqli_query($con, "UPDATE histori_sparepart SET hs_ttd='" . $actualpath . "' WHERE hs_id=" . $hlm_id);
 

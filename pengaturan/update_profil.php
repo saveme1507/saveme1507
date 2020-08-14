@@ -14,7 +14,7 @@ $random = random_word(20);
 $path = "images_profil/" . $random . ".png";
 
 // sesuiakan ip address laptop/pc atau URL server
-$actualpath = "http://192.168.43.103/pelaporan_imaje/pengaturan/$path";
+$actualpath = BASE_URL . "/pengaturan/$path";
 
 $query = mysqli_query($con, "UPDATE master_user SET mu_logo='$actualpath' WHERE mu_id='" . $mu_id . "'");
 

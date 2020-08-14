@@ -21,6 +21,11 @@ $tgl = date_format($date, "d M Y");
 $datePm = date_create($row_mesin['mm_last_pm']);
 $laspPm = date_format($date, "d M Y");
 
+$namaTtd = explode("/", $row['hs_ttd']);
+$namaTtd = end($namaTtd);
+$namaTtd = explode("_", $namaTtd);
+$namaTtd = current($namaTtd);
+
 if (!empty($row)) {
     $response = new usr();
     $response->success = 1;
@@ -30,6 +35,7 @@ if (!empty($row)) {
     $response->parameter = "Part Number :" . $row['hs_pn'] . " *Nama Part: " . $row['hs_nama'];
     $response->keterangan = $row['hs_ket'];
     $response->ttd = $row['hs_ttd'];
+    $response->namaTtd = $namaTtd;
     die(json_encode($response));
 }
 

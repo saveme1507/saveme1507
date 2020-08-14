@@ -24,6 +24,11 @@ $tgl = date_format($date, "d M Y");
 $datePm = date_create($row_mesin['mm_last_pm']);
 $laspPm = date_format($date, "d M Y");
 
+$namaTtd = explode("/", $row['hlm_ttd']);
+$namaTtd = end($namaTtd);
+$namaTtd = explode("_", $namaTtd);
+$namaTtd = current($namaTtd);
+
 if (!empty($row)) {
     $response = new usr();
     $response->success = 1;
@@ -34,6 +39,7 @@ if (!empty($row)) {
     $response->keterangan = $row['dlm_ket'];
     $response->teknisi = "Teknisi: " . $row_user['mu_nama'];
     $response->ttd = $row['hlm_ttd'];
+    $response->namaTtd = $namaTtd;
     die(json_encode($response));
 }
 
